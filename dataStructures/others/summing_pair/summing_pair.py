@@ -12,3 +12,12 @@ def findSummingPair(array, total):
         elif numbers_sum < total:
             left += 1
     return False
+
+def findSummingPairWithSet(data, total):
+    validCOmplements = set()
+    for i in range(len(data)):
+        if data[i] in validCOmplements:
+            return True
+
+        validCOmplements.add(total - data[i])
+    return False
