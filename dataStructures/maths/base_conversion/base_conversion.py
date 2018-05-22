@@ -4,10 +4,10 @@ ASCII_A = 65
 def convertBase(b1, number, b2):
     isNegative = number[0] == "-"
     total = 0
-    for i, n in enumerate(number[:(0 if isNegative else None):-1]):
-        total += int(n) * b1**i
+    for i in range(1 if isNegative else 0, len(number)):
+        total += int(number[i]) * b1**(len(number) - i - 1)
     maxpart = b2
-    while maxpart < total:
+    while maxpart <= total:
         maxpart *= b2
     maxpart /= b2
     newNumber = ["-" if isNegative else ""]
