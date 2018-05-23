@@ -8,11 +8,13 @@ def heightClimbedToEnergyNeeded(deltaHeight):
     return max(deltaHeight * gravForce, 0)
 
 def minimumEnergyNeededForPath(posArray):
-    maxDelta = 0
+    climb = 0
+    maxClimb = 0
     prevZ = posArray[0][2]
     for z in (pos[2] for pos in posArray):
-        if z - prevZ > maxDelta:
-            maxDelta = z - prevZ
+        climb = max(climb + (z - prevZ), 0)
+        if climb > maxClimb:
+            maxClimb = climb
         prevZ = z
 
-    return heightClimbedToEnergyNeeded(maxDelta)
+    return heightClimbedToEnergyNeeded(maxClimb)
