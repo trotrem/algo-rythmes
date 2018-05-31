@@ -11,9 +11,9 @@ closing = {
     ")": 2
 }
 
-def isBalanced(expression):
+def isBalanced(expr):
     par_stack = []
-    for par in expression:
+    for par in expr:
         if par in opening:
             par_stack.append(opening[par])
         elif par in closing:
